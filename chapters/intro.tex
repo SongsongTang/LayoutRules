@@ -1,12 +1,22 @@
 % !TeX root = ../main.tex
 
-\chapter*{主要布局要求V1.3}
-\section*{原理图更新日志 2023.09.24}
+\chapter*{主要布局要求V1.4}
+\section*{原理图更新日志 2023.09.25}
 \textcolor{red}{
+  \begin{enumerate}
+    \item PCB右侧的接口不要露出板框。
+    \item J21、J23 两个接口的六个通孔排成一排，且与板框留出8mm的距离。
+    \item 地测试孔与电源测试孔成对出现，J20连接器向左移动，J19 开关方向改为水平，放在J18上方（这里请看J19开关手册，把拨码露在板框外）。
+    \item U27、U31为FPGA和ARM之间通信的芯片，放在二者中间，可适当增加FPGA 和 ARM 之间距离。
+    \item 为方便布线，更新了 U28、U31所连接的ARM管脚位置。
+    \item 除了PCB右侧的两种接口，其余接口均可根据布线方便进行调整，PCB左侧除了电源，尽量不要留有其他接口。
+    \item 右侧两个接口器件摆在和SEAF所连接信号的不同侧，防止干扰。
+  \end{enumerate}
+}
+\section*{原理图更新日志 2023.09.24}
 \begin{enumerate}
   \item 为方便器件采购，更新了一些电容电阻封装。
 \end{enumerate}
-}
 \section*{原理图更新日志 2023.09.22}
 \begin{enumerate}
   \item 更新了LVDS接口及布局
