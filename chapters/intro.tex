@@ -4,13 +4,32 @@
 \section*{原理图更新日志 2023.09.25}
 \textcolor{red}{
   \begin{enumerate}
+    \item 更新了核心板螺母封装，更换为M2，L=2mm的贴片螺母。
     \item PCB右侧的接口不要露出板框。
     \item J21、J23 两个接口的六个通孔排成一排，且与板框留出8mm的距离。
     \item 地测试孔与电源测试孔成对出现，J20连接器向左移动，J19 开关方向改为水平，放在J18上方（这里请看J19开关手册，把拨码露在板框外）。
     \item U27、U31为FPGA和ARM之间通信的芯片，放在二者中间，可适当增加FPGA 和 ARM 之间距离。
     \item 为方便布线，更新了 U28、U31所连接的ARM管脚位置。
     \item 除了PCB右侧的两种接口，其余接口均可根据布线方便进行调整，PCB左侧除了电源，尽量不要留有其他接口。
-    \item 右侧两个接口器件摆在和SEAF所连接信号的不同侧，防止干扰。
+    \item 模拟信号连接器 J3 到 ADC 之间的所有阻容器件摆到电路板背面，电路板右边的数字接口放正面，走线的时候尽量把模拟信号走在第三层（叠层方案见表~\ref{tab:12laminate}中方案3）。
+    \begin{table}[ht]
+      \caption{12 层板叠层方案}
+      \label{tab:12laminate}
+      \centering
+      \begin{tabular}{p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}p{1em}}
+        \toprule
+        方案 & 电源 & 地 & 信号 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &12\\
+        \midrule
+        1 & 1 & 4 & 7 & S1 & G1 & S2 & G2 & S3 & P & S4 & G3 & S5 & S6 & G4 & S7\\
+        2 & 1 & 5 & 6 & S1 & G1 & S2 & G2 & S3 & G3 & P & S4 & G4 & S5 & G5 & S6\\
+        3 & 2 & 4 & 6 & S1 & G1 & S2 & G2 & S3 & P1 & G3 & S4 & P2 & S5 & G4 & S6\\
+        4 & 2 & 5 & 5 & S1 & G1 & S2 & G2 & S3 & G3 & P1 & P2 & G4 & S4 & G5 & S5\\
+        5 & 2 & 3 & 7 & S1 & G1 & S2 & S3 & P1 & G2 & S4 & S5 & P2 & S6 & G3 & S7\\
+        \bottomrule
+      \end{tabular}
+    \end{table}
+    \item SEAF 连接器 J3 中前 8 排信号为模拟信号，靠近 ADC 端，后一排信号大多为数字信号，靠近板框。
+    \item 电源树见附录~\ref{apd:power}。
   \end{enumerate}
 }
 \section*{原理图更新日志 2023.09.24}
